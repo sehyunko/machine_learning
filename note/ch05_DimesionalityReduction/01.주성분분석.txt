@@ -1,0 +1,25 @@
+01. 주성분 분석 (Principal Component Analysis, PCA) 
+
+
+차원 축소 : 데이터의 특성(설명 변수)의 갯수가 많아질수록, 데이터의 크기가 기하 급수적으로 커져서 메모리 문제가 생길 뿐더러, 
+
+데이터의 희소성 (sparsity)또한 증가하여 모델의 성능도 떨어뜨리게 되어 비효율적이게 됨. -> 설명력이 높은 상위 몇개의 특성만을 추출하자!
+
+
+1. 주성분 분석
+
+데이터의 분포 특성을 가장 잘 설명하는 (분산이 큰) 특성 벡터 상위 몇가지 만을 추출한다.  
+
+특이값 분해를 하게되면, 
+
+데이터 행렬 = left singular vector X singular value vector X right singular vector 의 형태로 분해가 되는데, singular value vector는 
+
+값의 내림차순으로 특이값이 정렬된다. singular value vector 에서 상위 몇개의 특이값만을 취하고, 각각의 특이값에 대응되는 left singular vector와 right singular vector를
+
+취하여 축소된 차원의 truncated SVD를 이용하여 새로운 저차원으로 투영행렬을 구한다.
+
+
+** PCA는 차원 축소과정에서 타깃 변수의 클래스 레이블 정보를 전혀 사용하지 않는 비지도 학습의 일종임.  
+
+
+

@@ -1,0 +1,27 @@
+04. 그리드 서치
+
+그리드 서치 (Grid Search): 로지스틱 회귀분석의 규제변수나, 결정 트리의 깊이 매개변수들과 같은 하이퍼 파라미터들에 대해 적정한 후보 값들을 
+
+		         미리 주어주고 각 하이퍼 파라미터 들의 조합에 대해 학습을 시켜 최상의 하이퍼 파라미터를 찾아내는 과정임. 
+
+사이킷런의 model_selection 클래스 내의 GridSearchCV 함수를 이용하여 실시한다. 
+
+
+
+from sklearn.model_selection import GridSerachCV 
+
+param_range = [  후보 하이퍼 파라미터 값들을 넣어줌   ]
+
+param_grid = [ { 예측에 이용할 param_range 와 예측에 이용할 커널함수 종류들과 같은 옵션들을 넣어줌 } ]
+
+gs = GridSearchCV( estimator = 예측에 이용할 추정기, 
+		 param_grid = param_grid, 
+		 scoring = 'accuracy'  --> 예측지표로 정확도를 사용
+		 cv = 10,  --> 10-fold cross-validation을 실시한다
+		n_jobs =-1 --> 내 컴퓨터의 모든 코어를 병렬적으로 사용하여 프로그램을 돌린다}   
+
+gs.fit(X_train, y_train) 
+
+gs.best_score_   --> 그리드 서치 결과 최상의 정확도를 반환 
+
+gs.best_params_ --> 최상의 정확도를 반환한 하이퍼 파라미터 조합을 반환 

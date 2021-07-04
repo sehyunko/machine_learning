@@ -1,0 +1,27 @@
+01. pipe line 
+
+데이터 전처리와 추정기를 파이프라인을 통해 연결하여 한번에 처리한다. 
+
+사이킷런 패키지 내 pipeline 클래스로 부터 make_pipeline 함수를 import한 후 pipe line을 만든다. 
+
+from sklearn.pipeline import make_pipeline
+
+pipe_lr = make_pipeline(변환기1, 변환기2 , .... , 추정기)  -> 항상 마지막 인자는 추정기가 와야 함. 
+
+
+변환기 : StandardScaler( ), PCA( ) ... 등과 같이 전처리, 수치 표준화 등에 필요한 함수가 올 수 있다 
+
+추정기: LogisticRegression( ) ... 등과 같은 예측 모델에 필요한 함수가 올 수 있다. 
+
+
+pipe_lr.fit(X_train, y_train) : fit 메소드를 통해 모델 구축 
+
+y_pred = pipe_lr.predict(X_test) : predict 메소드를 통해 예측값 생성 
+
+
+** 같은 pipeline 클래스 내에 Pipeline( ) 함수도 있는데 쓰임새가 조금 다르다. 인자값으로 튜플들을 원소로 가지는 리스트를 넣어준다. 
+
+pipeline = Pipeline( [ ('전처리기 key', 전처리함수( ) ), ('분류기 key', 분류기 함수( ) ) ]) 
+
+
+
